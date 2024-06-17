@@ -1,0 +1,35 @@
+<program> ::= <statement> | <program><separator><statement>
+
+<statement> ::= <assignment> | <if_statement> | <print_statement>
+
+<separator> ::= "\n" | ";"
+
+<assignment> ::= <identifier> "=" <expr>
+
+<if_statement> ::= "if" <condition> "{" <program> "}" <else_statement>?
+
+<else_statement> ::= "else" "{" <program> "}"
+
+<condition> ::= "(" <expr> <comparison> <expr> ")"
+
+<comparison> ::= "<" | ">" | "==" | "<=" | ">=" | "!="
+
+<print_statement> ::= "print" <identifier>
+
+<expr> ::= <term> | <expr> "+" <term> | <expr> "-" <term>
+
+<term> ::= <factor> | <term> "*" <factor> | <term> "/" <factor>
+
+<factor> :== <number> | <identifier> | "(" <expr> ")"
+
+<identifier> ::= <letter> | <identifier> <letter_or_digit>
+
+<letter_or_digit> ::= <letter> | <digit>
+
+<letter> ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" |
+ "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z" | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" |
+  "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
+
+<number> ::= <digit> | <number> <digit>
+
+<digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
