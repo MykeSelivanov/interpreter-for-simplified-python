@@ -2,6 +2,9 @@ package interpreter;
 
 import interpreter.lexer.Lexer;
 import interpreter.lexer.LexerException;
+import interpreter.parser.ASTNode;
+import interpreter.parser.Parser;
+import interpreter.parser.ParserException;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,8 +20,11 @@ public class Main {
 
         try {
             Lexer lexer = new Lexer(input);
-            lexer.forEach(token -> System.out.println(token));
-        } catch (LexerException e) {
+            lexer.forEach(System.out::println);
+            Parser parser = new Parser(lexer.tokens);
+            ASTNode rootNode = parser.parse();
+            rootNode.print("");
+        } catch (LexerException | ParserException e) {
             throw new RuntimeException(e);
         }
     }

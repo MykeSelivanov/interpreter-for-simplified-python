@@ -7,7 +7,7 @@ import java.util.function.Consumer;
 
 public class Lexer implements Iterable<Lexer.Token> {
     private final String input;
-    private final List<Token> tokens;
+    public final List<Token> tokens;
     private int current;
 
     public Lexer(String input) throws LexerException {
@@ -23,8 +23,11 @@ public class Lexer implements Iterable<Lexer.Token> {
             switch (ch) {
                 case ' ':
                 case '\t':
-                case '\n':
                 case '\r':
+                    current++;
+                    break;
+                case '\n':
+//                    tokens.add(new Token(TokenType.NEWLINE, "\\n"));
                     current++;
                     break;
                 case '=':
@@ -158,8 +161,8 @@ public class Lexer implements Iterable<Lexer.Token> {
     }
 
     public static class Token {
-        final TokenType type;
-        final String value;
+        public final TokenType type;
+        public final String value;
 
         public Token(TokenType type, String value) {
             this.type = type;
@@ -177,6 +180,6 @@ public class Lexer implements Iterable<Lexer.Token> {
 
     public enum TokenType {
         EQUAL, ASSIGNMENT, NOT_EQUAL, GREATER_EQUAL, GREATER_THAN, LESS_EQUAL, LESS_THAN, OPERATOR,
-        LBRACE, RBRACE, SEMICOLON, IF, ELSE, PRINT, IDENTIFIER, LPAREN, RPAREN, NUMBER
+        LBRACE, RBRACE, SEMICOLON, IF, ELSE, PRINT, IDENTIFIER, LPAREN, RPAREN, NUMBER, NEWLINE
     }
 }
