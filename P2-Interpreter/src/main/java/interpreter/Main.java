@@ -19,8 +19,10 @@ public class Main {
                 """;
 
         try {
+            System.out.println("\n=== Lexer ===\n");
             Lexer lexer = new Lexer(input);
             lexer.forEach(System.out::println);
+            System.out.println("\n=== Parser ===\n");
             Parser parser = new Parser(lexer.tokens);
             ASTNode rootNode = parser.parse();
             rootNode.print("");

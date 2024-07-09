@@ -21,7 +21,7 @@ public class Parser {
 
     private ASTNode program() {
         StatementListNode statements = new StatementListNode();
-        while (currentToken != null) {
+        while (currentToken != null && currentToken.type != Lexer.TokenType.RBRACE) {
             statements.addStatement(statement());
         }
         return statements;
@@ -31,19 +31,15 @@ public class Parser {
         ASTNode result;
         if (currentToken.type == Lexer.TokenType.IDENTIFIER) {
             result = assignment();
+            consume(Lexer.TokenType.SEMICOLON); // Expect semicolon after assignment
         } else if (currentToken.type == Lexer.TokenType.IF) {
             result = ifStatement();
         } else if (currentToken.type == Lexer.TokenType.PRINT) {
             result = printStatement();
+            consume(Lexer.TokenType.SEMICOLON); // Expect semicolon after print statement
         } else {
             throw new ParserException("Unexpected token: " + currentToken);
         }
-
-        if (currentToken != null && currentToken.type != Lexer.TokenType.SEMICOLON) {
-            throw new ParserException("Expected semicolon after statement");
-        }
-        consume(Lexer.TokenType.SEMICOLON);
-
         return result;
     }
 
