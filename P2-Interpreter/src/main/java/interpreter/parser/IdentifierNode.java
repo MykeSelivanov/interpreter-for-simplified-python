@@ -1,7 +1,7 @@
 package interpreter.parser;
 
 public class IdentifierNode extends ASTNode{
-    final String name;
+    public final String name;
 
     public IdentifierNode(String name) {
         this.name = name;

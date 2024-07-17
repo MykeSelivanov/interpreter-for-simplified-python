@@ -3,7 +3,7 @@ package interpreter.parser;
 import interpreter.lexer.Lexer;
 
 public class NumberNode extends ASTNode{
-    final int value;
+    public final int value;
     Lexer.Token numberToken;
 
     public NumberNode(Lexer.Token numberToken) {

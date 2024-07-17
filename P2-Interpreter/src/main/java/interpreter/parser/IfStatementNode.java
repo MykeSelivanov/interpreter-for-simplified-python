@@ -1,9 +1,9 @@
 package interpreter.parser;
 
 public class IfStatementNode extends ASTNode {
-    ASTNode condition;
-    ASTNode ifBlock;
-    ASTNode elseBlock;
+    public ASTNode condition;
+    public ASTNode ifBlock;
+    public ASTNode elseBlock;
 
     public IfStatementNode(ASTNode condition, ASTNode ifBlock, ASTNode elseBlock) {
         this.condition = condition;

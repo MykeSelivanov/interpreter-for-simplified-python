@@ -1,8 +1,8 @@
 package interpreter.parser;
 
 public class AssignmentNode extends ASTNode {
-    String identifier;
-    ASTNode expr;
+    public String identifier;
+    public ASTNode expr;
 
     public AssignmentNode(String identifier, ASTNode expr) {
         this.identifier = identifier;

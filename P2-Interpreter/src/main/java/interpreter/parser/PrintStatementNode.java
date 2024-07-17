@@ -1,7 +1,7 @@
 package interpreter.parser;
 
 public class PrintStatementNode extends ASTNode{
-    String identifier;
+    public String identifier;
 
     public PrintStatementNode(String identifier) {
         this.identifier = identifier;
